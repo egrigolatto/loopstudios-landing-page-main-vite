@@ -21,8 +21,8 @@ function Header() {
       className={`${
         menuOpen
           ? "bg-black "
-          : "bg-fondo_header_mobile bg-center bg-cover bg-no-repeat"
-      } h-[90vh] relative px-6 pt-12 md:px-10 md:bg-fondo_header_desktop lg:px-[140px]`}
+          : "bg-fondoHeaderMobile bg-center bg-cover bg-no-repeat"
+      } h-[90vh] relative px-6 pt-12 md:px-10 md:bg-fondoHeaderDesktop lg:px-[140px]`}
     >
       <div className="flex items-center justify-between transition-all">
         <div>

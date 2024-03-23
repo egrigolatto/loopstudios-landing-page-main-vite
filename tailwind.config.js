@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        fondo_header_mobile:
+        fondoHeaderMobile:
           'url("./src/assets/images/mobile/image-hero.jpg")',
-        fondo_header_desktop:
+        fondoHeaderDesktop:
           'url("./src/assets/images/desktop/image-hero.jpg")',
       },
       colors: {
