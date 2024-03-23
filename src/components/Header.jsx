@@ -5,7 +5,7 @@ import { useState } from "react";
 import Menu from "./Menu";
 
 function Header() {
-  const [menuOpen, setMenuOpen] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
