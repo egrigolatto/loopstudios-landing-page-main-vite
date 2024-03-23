@@ -1,11 +1,27 @@
 import logo from "../assets/images/logo.svg";
 import hambur from "../assets/images/icon-hamburger.svg";
 import close from "../assets/images/icon-close.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Menu from "./Menu";
+import fondoMobile from "../assets/images/mobile/image-hero.jpg";
+import fondoDesktop from "../assets/images/desktop/image-hero.jpg";
+
 
 function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640); // Establece si es móvil inicialmente basado en el ancho de la ventana
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640); // Actualiza isMobile al cambiar el tamaño de la ventana
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Limpia el evento de cambio de tamaño al desmontar el componente
+    };
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -17,12 +33,22 @@ function Header() {
     fontWeight: 400,
   };
   return (
+    // <header
+    //   className={`${
+    //     menuOpen
+    //       ? "bg-black "
+    //       : "bg-fondoHeaderMobile bg-center bg-cover bg-no-repeat"
+    //   } h-[90vh] relative px-6 pt-12 md:px-10 md:bg-fondoHeaderDesktop lg:px-[140px]`}
+    // >
     <header
-      className={`${
-        menuOpen
-          ? "bg-black "
-          : "bg-fondoHeaderMobile bg-center bg-cover bg-no-repeat"
-      } h-[90vh] relative px-6 pt-12 md:px-10 md:bg-fondoHeaderDesktop lg:px-[140px]`}
+      className="bg-black h-[90vh] relative px-6 pt-12 md:px-10 lg:px-[140px]"
+      style={{
+        background: menuOpen
+          ? "black"
+          : `url(${isMobile ? fondoMobile : fondoDesktop})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div className="flex items-center justify-between transition-all">
         <div>
