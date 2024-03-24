@@ -6,20 +6,18 @@ import Menu from "./Menu";
 import fondoMobile from "../assets/images/mobile/image-hero.jpg";
 import fondoDesktop from "../assets/images/desktop/image-hero.jpg";
 
-
 function Header() {
   const [menuOpen, setMenuOpen] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640); // Establece si es móvil inicialmente basado en el ancho de la ventana
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 640); // Actualiza isMobile al cambiar el tamaño de la ventana
+      setIsMobile(window.innerWidth < 768);
     };
 
     window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Limpia el evento de cambio de tamaño al desmontar el componente
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -43,11 +41,10 @@ function Header() {
     <header
       className="bg-black h-[90vh] relative px-6 pt-12 md:px-10 lg:px-[140px]"
       style={{
-        background: menuOpen
-          ? "black"
-          : `url(${isMobile ? fondoMobile : fondoDesktop})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: menuOpen ? 'none' : `url(${isMobile ? fondoMobile : fondoDesktop})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
       }}
     >
       <div className="flex items-center justify-between transition-all">
